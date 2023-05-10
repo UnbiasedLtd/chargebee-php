@@ -21,12 +21,12 @@ class ChargeBee_Curl {
         if ($meth == ChargeBee_Request::GET) {
             $opts[CURLOPT_HTTPGET] = 1;
             if (count($params) > 0) {
-                $encoded = http_build_query($params, null, '&');
+                $encoded = http_build_query($params, '', '&');
                 $url = "$url?$encoded";
             }
         } else if ($meth == ChargeBee_Request::POST) {
             $opts[CURLOPT_POST] = 1;
-            $opts[CURLOPT_POSTFIELDS] = http_build_query($params, null, '&');
+            $opts[CURLOPT_POSTFIELDS] = http_build_query($params, '', '&');
         } else {
             throw new Exception("Invalid http method $meth");
         }
